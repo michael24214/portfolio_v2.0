@@ -1,0 +1,688 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300;400;500;600;700&family=Sawarabi+Gothic&display=swap');
+
+:root {
+    --primary-color: #0040ff;
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --card-bg: #1e1e1e;
+    --modal-bg-dim: rgba(0, 0, 0, 0.9);
+    --transition-speed: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Sawarabi Gothic', sans-serif;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
+    color: var(--text-color);
+    min-height: 100vh;
+    animation: bodyGlow 10s ease-in-out infinite alternate;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 5%;
+    background: linear-gradient(90deg, #1e1e1e 0%, #2a2a2a 50%, #1e1e1e 100%);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(102, 126, 234, 0.3);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    animation: headerPulse 4s ease-in-out infinite alternate;
+}
+
+.logoimg {
+    height: 40px;
+    margin-right: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Cormorant Unicase', serif;
+    font-size: 1.8em;
+    margin: 0;
+    text-align: center;
+}
+
+.delete-all-btn {
+    background: linear-gradient(45deg, #ff4757, #ff3838);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.delete-all-btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+}
+
+.delete-all-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 71, 87, 0.6);
+}
+
+.delete-all-btn:hover:before {
+    left: 100%;
+}
+
+.delete-all-btn:active {
+    transform: translateY(-1px);
+}
+
+.contact-btn {
+    background: linear-gradient(45deg, #2ed573, #1e90ff);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(46, 213, 115, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(46, 213, 115, 0.6);
+}
+
+.contact-btn:hover:before {
+    left: 100%;
+}
+
+.contact-btn:active {
+    transform: translateY(-1px);
+}
+
+main {
+    padding: 20px 5%;
+    flex: 1;
+}
+
+.portfolio-container {
+    position: relative;
+}
+
+.add-project-btn {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6), 0 0 50px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+    z-index: 100;
+    animation: buttonFloat 3s ease-in-out infinite;
+}
+
+.add-project-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.8), 0 0 70px rgba(102, 126, 234, 0.5);
+}
+
+.add-project-btn img {
+    width: 35px;
+    height: 35px;
+    filter: brightness(0) invert(1);
+}
+
+.projects-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding-bottom: 50px;
+}
+
+.project-card {
+    background: linear-gradient(135deg, var(--card-bg) 0%, #2a2a2a 100%);
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(102, 126, 234, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 250px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 60px rgba(102, 126, 234, 0.4);
+}
+
+.project-card-content {
+    padding: 15px;
+    text-align: center;
+}
+
+.project-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.project-card h3 {
+    font-size: 1.2em;
+    margin: 10px 0 5px;
+    color: var(--primary-color);
+}
+
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 0, 0, 0.8);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 30px;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 5;
+}
+
+.project-card:hover .delete-btn {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--modal-bg-dim);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, var(--card-bg) 0%, #3a3a3a 100%);
+    margin: auto;
+    padding: 30px;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 80px rgba(102, 126, 234, 0.3);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+#add-project-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#add-project-form input[type="text"],
+#add-project-form textarea,
+#add-project-form input[type="url"],
+#add-project-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: var(--text-color);
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#add-project-form button[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+
+/* Super Mega Beautiful Contact Form Styles */
+#contact-form {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: formGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes formGlow {
+    from {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    to {
+        box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1), 0 0 50px rgba(102, 126, 234, 0.5);
+    }
+}
+
+#contact-form label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 1.1em;
+}
+
+#contact-form input[type="email"],
+#contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1em;
+    outline: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+#contact-form input[type="email"]:focus,
+#contact-form textarea:focus {
+    border-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+#contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+#contact-form button[type="submit"] {
+    background: linear-gradient(45deg, #ff6b6b, #ffa500);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+#contact-form button[type="submit"]:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+}
+
+#contact-form button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(255, 107, 107, 0.6);
+}
+
+#contact-form button[type="submit"]:hover:before {
+    left: 100%;
+}
+
+#contact-form button[type="submit"]:active {
+    transform: translateY(-1px);
+}
+
+#image-modal {
+    background-color: transparent;
+}
+
+.modal.viewing {
+    background-color: var(--modal-bg-dim);
+    backdrop-filter: blur(8px);
+}
+
+.image-modal-content {
+    width: 90%;
+    max-width: 1000px;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    transform: scale(0.5);
+}
+
+.modal.viewing .image-modal-content {
+    transform: scale(1);
+}
+
+#modal-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 123, 255, 0.5);
+}
+
+.details-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+    color: white;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.details-container h2 {
+    margin-top: 0;
+    color: white;
+}
+
+.details-container p {
+    font-size: 1.1em;
+}
+
+.details-container a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.details-container a:hover {
+    text-decoration: underline;
+}
+
+.image-modal-content .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    opacity: 0.7;
+    z-index: 101;
+}
+
+#delete-confirmation-modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(3px);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+#delete-confirmation-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+#delete-confirmation-modal .modal-content {
+    max-width: 350px;
+    text-align: center;
+}
+
+#delete-confirmation-modal button {
+    padding: 10px 15px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#delete-confirmation-modal .confirm-delete {
+    background-color: #dc3535;
+    color: white;
+}
+
+#delete-confirmation-modal .cancel-delete {
+    background-color: #6c757d;
+    color: white;
+}
+
+@keyframes bodyGlow {
+    from {
+        background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
+    }
+    to {
+        background: linear-gradient(135deg, #16213e 0%, #1a1a2e 50%, #0f0f0f 100%);
+    }
+}
+
+@keyframes headerPulse {
+    from {
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(102, 126, 234, 0.3);
+    }
+    to {
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.8), 0 0 60px rgba(102, 126, 234, 0.5);
+    }
+}
+
+@keyframes buttonFloat {
+    0%, 100% {
+        transform: translateY(-50%);
+    }
+    50% {
+        transform: translateY(-55%);
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #aaa;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-top: 10px;
+    }
+
+    .portfolio-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .projects-list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-right: 0;
+    }
+
+    .project-card {
+        min-height: 200px;
+    }
+
+    .project-card img {
+        height: 150px;
+    }
+
+    .project-card h3 {
+        font-size: 1.1em;
+    }
+
+    .modal-content {
+        max-width: 90%;
+        padding: 20px;
+        margin: 10% auto;
+    }
+
+    .image-modal-content {
+        max-width: 95%;
+        margin: 5% auto;
+    }
+
+    .details-container {
+        padding: 20px;
+    }
+
+    .details-container h2 {
+        font-size: 1.5em;
+    }
+
+    .details-container p {
+        font-size: 1em;
+    }
+
+    .add-project-btn {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .add-project-btn img {
+        width: 25px;
+        height: 25px;
+    }
+
+    #delete-confirmation-modal .modal-content {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .project-card img {
+        height: 120px;
+    }
+
+    .modal-content {
+        padding: 15px;
+    }
+
+    .details-container {
+        padding: 15px;
+    }
+
+    .add-project-btn {
+        width: 45px;
+        height: 45px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .add-project-btn img {
+        width: 20px;
+        height: 20px;
+    }
+}

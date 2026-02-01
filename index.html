@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Portfolio</title>
+</head>
+<body>
+    
+<header>
+    <img src="img/logo.png" alt="Logo" class="logoimg">
+    <h1>
+        Your Portfolio for anything 
+    </h1>
+
+    <div class="pustota"></div>
+
+</header>
+<main>
+    <section class="login-section">
+        
+        <form action="main.html" method="GET" class="login-form" onsubmit="return handleLogin(event)">
+            <h2>Login to Your Account</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required placeholder = "Enter your username">
+
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required placeholder = "Enter your password">
+
+            <button type="submit">Login</button>
+        </form>
+    </section>
+</main>
+<footer>
+    &copy; 2026 Your Portfolio. All rights reserved.
+</footer>
+
+<script src="script.js"></script>
+<script>
+function handleLogin(event) {
+    event.preventDefault();
+    // Простая проверка, например, username и password не пустые
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    if (username && password) {
+        // Перенаправление на main.html
+        window.location.href = 'main.html';
+    } else {
+        alert('Please enter username and password');
+    }
+}
+</script>
+</body>
+</html>
+
